@@ -27,42 +27,42 @@ app.get('/search',(req,res)=>{
 })
 
 
-// app.get('/', (req, res) => {
-//     res.send("This is my first server program");
-// });
+app.get('/', (req, res) => {
+    res.send("This is my first server program");
+});
 
-// app.get('/khan', (req, res) => {
-//     res.send("This is the about page");
-// });
+app.get('/khan', (req, res) => {
+    res.send("This is the about page");
+});
 
-// app.get('/contact', (req, res) => {
-//     res.send("This is the contact page");
-// });
+app.get('/contact', (req, res) => {
+    res.send("This is the contact page");
+});
 
-// app.get('/weather/:cityName', (req, res) => {
-//     let weatherData = {
-//         karachi: {
-//             city: "karachi",
-//             temp: 30,
-//             feellike: 34,
-//             maxTemp: 45
-//         },
-//         london: {
-//             city: "london",
-//             temp: 45,
-//             feellike: 34,
-//             maxTemp: 33
-//         }
-//     };
+app.get('/weather/:cityName', (req, res) => {
+    let weatherData = {
+        karachi: {
+            city: "karachi",
+            temp: 30,
+            feellike: 34,
+            maxTemp: 45
+        },
+        london: {
+            city: "london",
+            temp: 45,
+            feellike: 34,
+            maxTemp: 33
+        }
+    };
 
-//     let inputCityName = req.params.cityName.toLowerCase();
-//     let weatherDatatoSend = weatherData[inputCityName];
+    let inputCityName = req.params.cityName.toLowerCase();
+    let weatherDatatoSend = weatherData[inputCityName];
 
-//     if (weatherDatatoSend) {
-//         console.log("weather report of the city name " , inputCityName)
-//         res.send(weatherDatatoSend);
-//     } else {
-//         console.log("the resut is not found for the city" , inputCityName)
-//         res.status(404).send()
-//     }
-// });
+    if (weatherDatatoSend) {
+        console.log("weather report of the city name " , inputCityName)
+        res.send(weatherDatatoSend);
+    } else {
+        console.log("the resut is not found for the city" , inputCityName)
+        res.status(404).send()
+    }
+});
