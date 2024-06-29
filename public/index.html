@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form onsubmit="weatherapp(); return false;">
+        <label for="cityname">City:</label>
+        <input type="text" name="cityname" id="cityname" placeholder="Enter your city name">
+        <br><br>
+        <button type="submit">Get Weather</button>
+    </form>
+    <div id="result"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module">
+        window.weatherapp = function () {
+            let cityname = document.querySelector("#cityname").value;
+
+            axios.get(`http://localhost:3000/weather/${cityname}`)
+                .then(function (response) {
+                    // handle success
+                    console.log(response.data);
+                    document.querySelector("#result").innerHTML = `Current temperature in ${response.data.city} is ${response.data.temp}`;
+                })
+                .catch(function (error) {
+                    // // handle error
+                    console.log(error.response.data);
+                    document.querySelector("#result").innerHTML = "the data is not found";
+                });
+        }
+    </script>
+</body>
+</html>
